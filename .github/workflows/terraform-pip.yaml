@@ -40,7 +40,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: tfplan
-          path: envs/dev/tfplan
+          path: terraform/envs/dev/tfplan
 
 
   apply:
@@ -51,7 +51,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: envs/dev
+        working-directory: terraform/envs/dev
 
     steps:
       - name: Checkout code
@@ -74,7 +74,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: tfplan
-          path: envs/dev
+          path: terraform/envs/dev
 
       - name: Terraform Apply
         run: terraform apply -auto-approve tfplan
