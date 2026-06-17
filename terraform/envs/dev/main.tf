@@ -5,13 +5,13 @@ module "ecr" {
 }
 
 module "ecr" {
-  source = "./modules/ecr"
+  source = "terraform/modules/ecr"
   repository_name = "${var.repository_name}-${var.environment}"
   tags            = var.tags
 }
 
 module "apprunner" {
-  source = "./modules/apprunner"
+  source = "terraform/modules/apprunner"
 
   service_name         = "${var.repository_name}-${var.environment}"
   image_repository_url = module.ecr.repository_url
